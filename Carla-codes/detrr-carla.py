@@ -94,7 +94,7 @@ def main():
     parser.add_argument('--folder', type=str, default='0001.0.0.0', help='img folder to generate preds for')
     args = parser.parse_args()
 
-    data_imgs = "Carla_data/images"
+    data_imgs = "Carla_data/Images"
 
     print("Generating preds for folder ", args.folder)
 
