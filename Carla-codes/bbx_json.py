@@ -11,7 +11,7 @@ def main():
     target_color = [220, 20, 60, 255]
     start = time.time()
     
-    root = "Carla_data"
+    root = "Carla_data/Images"
     pathlist = os.listdir(root) 
     # reverse path list
     # pathlist.reverse()
