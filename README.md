@@ -94,5 +94,3 @@ use only one pedestrian type for each category due to the limited choices in the
 
 ### Contact
 In case of any query, create issue or contact bpathir1@asu.edu
-
-### Acknowledgement
