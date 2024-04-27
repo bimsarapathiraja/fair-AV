@@ -32,7 +32,7 @@ def main():
     world.set_weather(weather_param)
     
     #makes data directory
-    PATH = f"Carla_data/images/{weather_path}"
+    PATH = f"Carla_data/Images/{weather_path}"
     if not os.path.exists(PATH): os.makedirs(PATH)
     else: return
          
