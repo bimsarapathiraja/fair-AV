@@ -317,6 +317,28 @@ def summarize2(coco_eval):
             summarize = _summarizeKps
         coco_eval.stats = summarize()
 
+def filter_preds(ground_truth_file, predicted_boxes_file):
+
+    with open(ground_truth_file) as json_file:
+        ground_truth = json.load(json_file)
+
+    with open(predicted_boxes_file) as json_file:
+        predicted_boxes = json.load(json_file)
+
+    gt_imgs_ids = [img["id"] for img in ground_truth["images"]]
+
+    rm_pred_lst = []
+
+    for pred in predicted_boxes:
+        if pred["image_id"] not in gt_imgs_ids:
+            rm_pred_lst.append(pred)
+
+    for pred in rm_pred_lst:
+        predicted_boxes.remove(pred)
+
+    with open(predicted_boxes_file, "w") as json_file:
+        json_file.write(json.dumps(predicted_boxes, indent=0))
+
 
 def main():
 
@@ -329,6 +351,9 @@ def main():
     ground_truth_file = f"Carla_data/Preds/0001.0.0.0/annotations.json"
     predicted_boxes_file = f"Carla_data/Preds/0001.0.0.0/preds_detr_r50.json"
 
+    # filter out the images that are not in the ground truth. Some simulated rgb images may not have any pedestrians
+    filter_preds(ground_truth_file, predicted_boxes_file) 
+    
     # Create COCO objects
     coco_gt = COCO(ground_truth_file)
     coco_dt = coco_gt.loadRes(predicted_boxes_file)
