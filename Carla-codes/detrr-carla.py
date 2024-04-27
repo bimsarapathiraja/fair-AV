@@ -91,10 +91,10 @@ def generate_preds(model, data_imgs, folder):
 def main():
 
     parser = argparse.ArgumentParser(description='Generating preds for each skin tone')
-    parser.add_argument('--folder', type=str, default='', help='img folder to generate preds for')
+    parser.add_argument('--folder', type=str, default='0001.0.0.0', help='img folder to generate preds for')
     args = parser.parse_args()
 
-    data_imgs = "Carla_data/images/0001.0.0.0"
+    data_imgs = "Carla_data/images"
 
     print("Generating preds for folder ", args.folder)
 
